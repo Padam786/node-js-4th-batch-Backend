@@ -1,4 +1,11 @@
-const sum = require("./sum");
+import {fullname, hey} from "./module/sum"
 
-console.log(sum(3, 4));
+function fetchData(callback) {
+  setTimeout(() => {
+    callback("Data fetched!");
+  }, 2000);
+}
 
+fetchData((message) => {
+  console.log(message);
+});
