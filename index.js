@@ -1,21 +1,13 @@
 
-const fs = require('fs');
-
-fs.readFile("students.json", { encoding:"utf-8"},  (err, data) => {
-
-  if (err)  console.error(err);
-
-console.log(data);
-  //change this object 
-  const student  = JSON.parse(data);
-  student.name = "pratik"
+const http = require('http');
 
 
-  fs.writeFile("students.json", JSON.stringify(student) , (err) => {
-    if (err) console.error(err);
-    console.log("file updated successfully")  ; 
-  })
-
+const server  = http.createServer ( (req, res) => {
+  res.end("Hello world")
 })
 
-console.log("hello world")
+server.listen(3000,  () => {
+  console.log("server is running on port 3000")
+})
+
+
