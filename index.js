@@ -1,29 +1,21 @@
 
 const fs = require('fs');
 
-const file ="hello";
-const data = " hey i am padam"
+fs.readFile("students.json", { encoding:"utf-8"},  (err, data) => {
 
-// fs.writeFileSync(file,data)
-//async write file 
+  if (err)  console.error(err);
 
-// fs.writeFile(file,data, (err,data)=> {
-//    if (err) console.error(err);
-// })
-
-fs.readFile(file, {
-  encoding: 'utf8',
-
-}, callback)
+console.log(data);
+  //change this object 
+  const student  = JSON.parse(data);
+  student.name = "pratik"
 
 
+  fs.writeFile("students.json", JSON.stringify(student) , (err) => {
+    if (err) console.error(err);
+    console.log("file updated successfully")  ; 
+  })
 
-function callback (err,data) {
-   if (err) console.error(err);
-   console.log(data);
+})
 
-
-}
-
-
-console.log(" i am last please console log me")
+console.log("hello world")
